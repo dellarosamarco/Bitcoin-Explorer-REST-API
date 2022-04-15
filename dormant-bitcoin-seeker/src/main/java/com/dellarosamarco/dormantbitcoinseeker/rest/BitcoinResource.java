@@ -14,7 +14,6 @@ public class BitcoinResource {
 
     @RequestMapping(value = "/randomPrivateKey", method = RequestMethod.GET)
     public String randomPrivateKey(){
-        bitcoinService.randomPrivateKey();
-        return "ciao";
+        return bitcoinService.randomPrivateKey();
     }
 }

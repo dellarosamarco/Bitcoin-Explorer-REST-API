@@ -1,12 +1,14 @@
 package com.dellarosamarco.dormantbitcoinseeker.utils;
 
+import java.util.HexFormat;
+
 public class BitcoinUtils
 {
-    public static int[] randomBytes(int length){
-        int[] bytes = new int[length];
+    public static byte[] randomBytes(int length){
+        byte[] bytes = new byte[length];
 
         for(int n=0;n<length;n++) {
-            bytes[n] = (int) (Math.random() * 255);
+            bytes[n] = (byte)(Math.random() * 255);
         }
 
         return bytes;

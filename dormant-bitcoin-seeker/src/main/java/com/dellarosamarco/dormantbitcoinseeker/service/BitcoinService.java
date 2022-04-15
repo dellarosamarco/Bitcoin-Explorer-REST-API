@@ -3,14 +3,16 @@ package com.dellarosamarco.dormantbitcoinseeker.service;
 import com.dellarosamarco.dormantbitcoinseeker.utils.BitcoinUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.HexFormat;
+
 @Service
 public class BitcoinService {
-    public void randomPrivateKey(){
-        int[] bytes = BitcoinUtils.randomBytes(32);
+    public String randomPrivateKey(){
+        byte[] bytes = BitcoinUtils.randomBytes(32);
+        return bytesToString(bytes);
+    }
 
-        for(int n=0;n<32;n++){
-            System.out.println(bytes[n]);
-        }
-
+    public String bytesToString(byte[] bytes){
+        return HexFormat.of().formatHex(bytes);
     }
 }

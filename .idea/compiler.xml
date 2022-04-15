@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="dormant-bitcoin-seeker" target="11" />
+      <module name="dormant-bitcoin-seeker" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
