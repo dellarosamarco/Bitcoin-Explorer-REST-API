@@ -14,10 +14,6 @@ public class BitcoinResource {
     @Autowired
     private BitcoinService bitcoinService;
 
-    public BitcoinResource(){
-
-    }
-
     @RequestMapping(value = "/randomPrivateKey", method = RequestMethod.GET)
     public String randomPrivateKey(){
         return bitcoinService.randomPrivateKey();
@@ -25,7 +21,7 @@ public class BitcoinResource {
 
     @RequestMapping(value = "/randomAddress", method = RequestMethod.GET)
     public String randomAddress() {
-        String privateKey = "0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D";
+        String privateKey = randomPrivateKey();
 
         // EXTENDED KEY
         StringBuilder extended = new StringBuilder((BitcoinUtils.bytesToHex(new byte[]{(byte)0x80})) + privateKey);
