@@ -2,10 +2,11 @@ package com.dellarosamarco.dormantbitcoinseeker.service;
 
 import com.dellarosamarco.dormantbitcoinseeker.dto.AddressDTO;
 import com.dellarosamarco.dormantbitcoinseeker.dto.PrivateKeyDTO;
-import com.dellarosamarco.dormantbitcoinseeker.utils.Base58;
 import com.dellarosamarco.dormantbitcoinseeker.utils.BitcoinUtils;
 import org.springframework.stereotype.Service;
-import java.util.Arrays;
+import org.web3j.crypto.Sign;
+
+import java.math.BigInteger;
 
 @Service
 public class BitcoinService {
@@ -55,6 +56,7 @@ public class BitcoinService {
     }
 
     public String privateKeyToPublicKey(String privateKey){
-        return "a";
+        BigInteger pubKey = Sign.publicKeyFromPrivate(new BigInteger(privateKey,16));
+        return BitcoinUtils.compressPubKey(pubKey);
     }
 }

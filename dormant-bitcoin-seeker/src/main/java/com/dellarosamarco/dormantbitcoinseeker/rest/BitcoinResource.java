@@ -24,8 +24,13 @@ public class BitcoinResource {
     }
 
     @RequestMapping(value = "/privateKeyToAddress", method = RequestMethod.POST)
-    public AddressDTO[] privateKeyToAddress(@RequestBody() PrivateKeyDTO[] privateKey){
+    public AddressDTO[] privateKeyToWif(@RequestBody() PrivateKeyDTO[] privateKey){
         return bitcoinService.privateKeyToAddress(privateKey);
+    }
+
+    @RequestMapping(value = "/privateKeyToPublicKey", method = RequestMethod.GET)
+    public String privateKeyToPublicKey(@RequestParam(name = "Private Key") String privateKey){
+        return bitcoinService.privateKeyToPublicKey(privateKey);
     }
 
     @RequestMapping(value = "wifToPrivateKey", method = RequestMethod.GET)

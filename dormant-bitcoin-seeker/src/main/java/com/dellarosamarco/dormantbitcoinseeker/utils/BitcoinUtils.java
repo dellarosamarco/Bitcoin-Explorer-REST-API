@@ -1,5 +1,6 @@
 package com.dellarosamarco.dormantbitcoinseeker.utils;
 
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -87,5 +88,12 @@ public class BitcoinUtils
         byte[] decodedWif = Base58.decode(wif);
         decodedWif = Arrays.copyOfRange(decodedWif, 1, decodedWif.length-4);
         return BitcoinUtils.bytesToHex(decodedWif);
+    }
+
+    public static String compressPubKey(BigInteger pubKey) {
+        String pubKeyYPrefix = pubKey.testBit(0) ? "03" : "02";
+        String pubKeyHex = pubKey.toString(16);
+        String pubKeyX = pubKeyHex.substring(0, 64);
+        return pubKeyYPrefix + pubKeyX;
     }
 }
