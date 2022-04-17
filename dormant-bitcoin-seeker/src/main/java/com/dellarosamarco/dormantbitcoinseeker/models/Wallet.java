@@ -1,14 +1,13 @@
 package com.dellarosamarco.dormantbitcoinseeker.models;
 
 public class Wallet {
-    public String address;
-    public String privateKey;
-    public String wif;
-    public String publicKey;
-    public double balance;
-    public double totalReceived;
-    public int totalTransactions;
-
+    private String address;
+    private String privateKey;
+    private String wif;
+    private String publicKey;
+    private double balance;
+    private double totalReceived;
+    private int totalTransactions;
 
     public String getAddress() {
         return address;
