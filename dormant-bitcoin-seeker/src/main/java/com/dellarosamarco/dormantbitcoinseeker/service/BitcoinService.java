@@ -2,9 +2,11 @@ package com.dellarosamarco.dormantbitcoinseeker.service;
 
 import com.dellarosamarco.dormantbitcoinseeker.dto.AddressDTO;
 import com.dellarosamarco.dormantbitcoinseeker.dto.PrivateKeyDTO;
+import com.dellarosamarco.dormantbitcoinseeker.utils.Base58;
 import com.dellarosamarco.dormantbitcoinseeker.utils.Base58CheckEncoding;
 import com.dellarosamarco.dormantbitcoinseeker.utils.BitcoinUtils;
 import org.springframework.stereotype.Service;
+import java.util.Arrays;
 
 @Service
 public class BitcoinService {
@@ -26,8 +28,8 @@ public class BitcoinService {
 
         for(int i=0;i<total;i++){
             addresses[i] = new AddressDTO();
-            addresses[i].setAddress(generateAddress(privateKeys[i].getPrivateKey()));
             addresses[i].setPrivateKey(privateKeys[i].getPrivateKey());
+            addresses[i].setWif(hexToWif(privateKeys[i].getPrivateKey()));
         }
 
         return addresses;
@@ -39,14 +41,14 @@ public class BitcoinService {
 
         for(int i=0;i<total;i++){
             addresses[i] = new AddressDTO();
-            addresses[i].setAddress(generateAddress(privateKeys[i].getPrivateKey()));
             addresses[i].setPrivateKey(privateKeys[i].getPrivateKey());
+            addresses[i].setWif(hexToWif(privateKeys[i].getPrivateKey()));
         }
 
         return addresses;
     }
 
-    public String generateAddress(String privateKey){
+    public String hexToWif(String privateKey){
         // EXTENDED KEY
         StringBuilder extended = new StringBuilder((BitcoinUtils.bytesToHex(new byte[]{(byte)0x80})) + privateKey);
 
@@ -64,5 +66,15 @@ public class BitcoinService {
 
         // Convert into base58
         return Base58CheckEncoding.convertToBase58(extended.toString());
+    }
+
+    public String wifToHex(String wif){
+        byte[] decodedWif = Base58.decode(wif);
+        decodedWif = Arrays.copyOfRange(decodedWif, 0, decodedWif.length-4);
+        return BitcoinUtils.bytesToHex(decodedWif);
+    }
+
+    public String privateKeyToPublicKey(String privateKey){
+        return "a";
     }
 }
