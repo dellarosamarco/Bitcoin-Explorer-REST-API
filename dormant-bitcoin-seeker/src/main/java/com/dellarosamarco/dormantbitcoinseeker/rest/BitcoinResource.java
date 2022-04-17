@@ -1,7 +1,8 @@
 package com.dellarosamarco.dormantbitcoinseeker.rest;
 
-import com.dellarosamarco.dormantbitcoinseeker.dto.AddressDTO;
-import com.dellarosamarco.dormantbitcoinseeker.dto.PrivateKeyDTO;
+import com.dellarosamarco.dormantbitcoinseeker.models.Address;
+import com.dellarosamarco.dormantbitcoinseeker.models.PrivateKey;
+import com.dellarosamarco.dormantbitcoinseeker.models.PublicKey;
 import com.dellarosamarco.dormantbitcoinseeker.service.BitcoinService;
 import com.dellarosamarco.dormantbitcoinseeker.utils.BitcoinUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +15,22 @@ public class BitcoinResource {
     private BitcoinService bitcoinService;
 
     @RequestMapping(value = "/randomPrivateKey", method = RequestMethod.GET)
-    public PrivateKeyDTO[] randomPrivateKey(@RequestParam(required = false, name = "Total private keys", defaultValue = "1") int total){
+    public PrivateKey[] randomPrivateKey(@RequestParam(required = false, name = "Total private keys", defaultValue = "1") int total){
         return bitcoinService.randomPrivateKey(total);
     }
 
     @RequestMapping(value = "/randomAddress", method = RequestMethod.GET)
-    public AddressDTO[] randomAddress(@RequestParam(required = false, name = "Total addresses", defaultValue = "1") int total) {
+    public Address[] randomAddress(@RequestParam(required = false, name = "Total addresses", defaultValue = "1") int total) {
         return bitcoinService.randomAddress(total);
     }
 
     @RequestMapping(value = "/privateKeyToAddress", method = RequestMethod.POST)
-    public AddressDTO[] privateKeyToWif(@RequestBody() PrivateKeyDTO[] privateKey){
+    public Address[] privateKeyToWif(@RequestBody() PrivateKey[] privateKey){
         return bitcoinService.privateKeyToAddress(privateKey);
     }
 
     @RequestMapping(value = "/privateKeyToPublicKey", method = RequestMethod.GET)
-    public String privateKeyToPublicKey(@RequestParam(name = "Private Key") String privateKey){
+    public PublicKey privateKeyToPublicKey(@RequestParam(name = "Private Key") String privateKey){
         return bitcoinService.privateKeyToPublicKey(privateKey);
     }
 

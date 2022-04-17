@@ -1,6 +1,6 @@
-package com.dellarosamarco.dormantbitcoinseeker.dto;
+package com.dellarosamarco.dormantbitcoinseeker.models;
 
-public class WalletDTO {
+public class Wallet {
     public String address;
     public String privateKey;
     public String wif;

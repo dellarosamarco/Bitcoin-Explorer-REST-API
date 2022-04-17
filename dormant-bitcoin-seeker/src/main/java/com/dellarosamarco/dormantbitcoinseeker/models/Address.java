@@ -1,6 +1,7 @@
-package com.dellarosamarco.dormantbitcoinseeker.dto;
+package com.dellarosamarco.dormantbitcoinseeker.models;
 
-public class PrivateKeyDTO {
+public class Address {
+    private String address;
     private String privateKey;
     private String wif;
 
@@ -10,6 +11,14 @@ public class PrivateKeyDTO {
 
     public void setPrivateKey(String privateKey) {
         this.privateKey = privateKey;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getWif() {
