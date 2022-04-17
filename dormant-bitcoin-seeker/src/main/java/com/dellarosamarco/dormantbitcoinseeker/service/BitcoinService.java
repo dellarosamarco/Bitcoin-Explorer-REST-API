@@ -15,8 +15,11 @@ public class BitcoinService {
 
         for(int i=0;i<total;i++){
             byte[] bytes = BitcoinUtils.randomBytes(32);
+            String hex = BitcoinUtils.bytesToHex(bytes);
+
             PrivateKeyDTO privateKey = new PrivateKeyDTO();
-            privateKey.setPrivateKey(BitcoinUtils.bytesToHex(bytes));
+            privateKey.setPrivateKey(hex);
+            privateKey.setWif(hexToWif(hex));
             privateKeys[i] = privateKey;
         }
         return privateKeys;
@@ -27,9 +30,11 @@ public class BitcoinService {
         PrivateKeyDTO[] privateKeys = randomPrivateKey(total);
 
         for(int i=0;i<total;i++){
+            String hex = privateKeys[i].getPrivateKey();
+
             addresses[i] = new AddressDTO();
-            addresses[i].setPrivateKey(privateKeys[i].getPrivateKey());
-            addresses[i].setWif(hexToWif(privateKeys[i].getPrivateKey()));
+            addresses[i].setPrivateKey(hex);
+            addresses[i].setWif(hex);
         }
 
         return addresses;
@@ -40,9 +45,11 @@ public class BitcoinService {
         AddressDTO[] addresses = new AddressDTO[total];
 
         for(int i=0;i<total;i++){
+            String hex = privateKeys[i].getPrivateKey();
+
             addresses[i] = new AddressDTO();
-            addresses[i].setPrivateKey(privateKeys[i].getPrivateKey());
-            addresses[i].setWif(hexToWif(privateKeys[i].getPrivateKey()));
+            addresses[i].setPrivateKey(hex);
+            addresses[i].setWif(hexToWif(hex));
         }
 
         return addresses;
