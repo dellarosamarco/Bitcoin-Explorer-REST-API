@@ -34,6 +34,11 @@ public class BitcoinResource {
         return bitcoinService.privateKeyToPublicKey(privateKey);
     }
 
+    @RequestMapping(value = "/publicKeyToAddress", method = RequestMethod.GET)
+    public String publicKeyToAddress(@RequestParam(name = "Public Key") String publicKey){
+        return bitcoinService.publicKeyToAddress(publicKey);
+    }
+
     @RequestMapping(value = "wifToPrivateKey", method = RequestMethod.GET)
     public String wifToPrivateKey(@RequestParam(name = "WIF") String wif){
         return BitcoinUtils.wifToHex(wif);

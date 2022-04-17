@@ -64,6 +64,17 @@ public class BitcoinUtils
         }
     }
 
+    public static byte[] ripeMD160(byte[] data){
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("RipeMD160");
+            messageDigest.update(data);
+            return messageDigest.digest();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static String hexToWif(String privateKey){
         // EXTENDED KEY
         StringBuilder extended = new StringBuilder((BitcoinUtils.bytesToHex(new byte[]{(byte)0x80})) + privateKey);
