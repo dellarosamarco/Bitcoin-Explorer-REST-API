@@ -3,7 +3,6 @@ package com.dellarosamarco.dormantbitcoinseeker.service;
 import com.dellarosamarco.dormantbitcoinseeker.dto.AddressDTO;
 import com.dellarosamarco.dormantbitcoinseeker.dto.PrivateKeyDTO;
 import com.dellarosamarco.dormantbitcoinseeker.utils.Base58;
-import com.dellarosamarco.dormantbitcoinseeker.utils.Base58CheckEncoding;
 import com.dellarosamarco.dormantbitcoinseeker.utils.BitcoinUtils;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ public class BitcoinService {
 
             PrivateKeyDTO privateKey = new PrivateKeyDTO();
             privateKey.setPrivateKey(hex);
-            privateKey.setWif(hexToWif(hex));
+            privateKey.setWif(BitcoinUtils.hexToWif(hex));
             privateKeys[i] = privateKey;
         }
         return privateKeys;
@@ -34,7 +33,7 @@ public class BitcoinService {
 
             addresses[i] = new AddressDTO();
             addresses[i].setPrivateKey(hex);
-            addresses[i].setWif(hex);
+            addresses[i].setWif(BitcoinUtils.hexToWif(hex));
         }
 
         return addresses;
@@ -49,36 +48,10 @@ public class BitcoinService {
 
             addresses[i] = new AddressDTO();
             addresses[i].setPrivateKey(hex);
-            addresses[i].setWif(hexToWif(hex));
+            addresses[i].setWif(BitcoinUtils.hexToWif(hex));
         }
 
         return addresses;
-    }
-
-    public String hexToWif(String privateKey){
-        // EXTENDED KEY
-        StringBuilder extended = new StringBuilder((BitcoinUtils.bytesToHex(new byte[]{(byte)0x80})) + privateKey);
-
-        // SHA-256 OF THE EXTENDED KEY
-        byte[] sha256extendedBytes = BitcoinUtils.sha256(BitcoinUtils.hexToBytes(extended.toString()));
-        assert sha256extendedBytes != null;
-
-        // SHA-256 OF SHA-256 OF THE EXTENDED KEY
-        byte[] sha256extendedOfExtendedBytes = BitcoinUtils.sha256(sha256extendedBytes);
-        assert sha256extendedOfExtendedBytes != null;
-        String sha256extendedOfExtendedString = BitcoinUtils.bytesToHex(sha256extendedOfExtendedBytes);
-
-        // CHECKSUM
-        extended.append(sha256extendedOfExtendedString, 0, 8);
-
-        // Convert into base58
-        return Base58CheckEncoding.convertToBase58(extended.toString());
-    }
-
-    public String wifToHex(String wif){
-        byte[] decodedWif = Base58.decode(wif);
-        decodedWif = Arrays.copyOfRange(decodedWif, 0, decodedWif.length-4);
-        return BitcoinUtils.bytesToHex(decodedWif);
     }
 
     public String privateKeyToPublicKey(String privateKey){
