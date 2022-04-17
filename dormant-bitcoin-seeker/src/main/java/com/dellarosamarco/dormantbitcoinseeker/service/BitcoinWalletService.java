@@ -17,9 +17,7 @@ public class BitcoinWalletService {
 
         for(int i=0;i<total;i++){
             wallets[i] = new Wallet();
-            wallets[i].setAddress(addresses[i].getAddress());
             wallets[i].setPrivateKey(addresses[i].getPrivateKey());
-            wallets[i].setBalance(10);
         }
 
         return wallets;

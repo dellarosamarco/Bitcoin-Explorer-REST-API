@@ -23,12 +23,12 @@ public class BitcoinUtilsResource {
         return BitcoinUtilsService.publicKeyToAddress(publicKey);
     }
 
-    @RequestMapping(value = "wifToPrivateKey", method = RequestMethod.GET)
+    @RequestMapping(value = "/wifToPrivateKey", method = RequestMethod.GET)
     public String wifToPrivateKey(@RequestParam(name = "WIF") String wif){
         return BitcoinUtilsService.wifToHex(wif);
     }
 
-    @RequestMapping(value = "privateKeyToWif", method = RequestMethod.GET)
+    @RequestMapping(value = "/privateKeyToWif", method = RequestMethod.GET)
     public String privateKeyToWif(@RequestParam(name = "Private key") String privateKey){
         return BitcoinUtilsService.hexToWif(privateKey);
     }

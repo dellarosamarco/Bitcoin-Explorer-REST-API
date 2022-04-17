@@ -50,17 +50,6 @@ public class BitcoinUtilsService
         return data;
     }
 
-    public static byte[] sha256(String data) {
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(data.getBytes(StandardCharsets.UTF_8));
-            return messageDigest.digest();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public static byte[] sha256(byte[] data) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
