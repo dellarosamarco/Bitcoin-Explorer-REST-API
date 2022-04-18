@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BitcoinUtilsResource {
-    @RequestMapping(value = "/privateKeyToAddress", method = RequestMethod.POST)
-    public Address[] privateKeyToWif(@RequestBody() PrivateKey[] privateKey){
+    @RequestMapping(value = "/privateKeyToAddress", method = RequestMethod.GET)
+    public @ResponseBody Address[] privateKeyToWif(@RequestParam(name = "privateKey") String[] privateKey){
         return BitcoinUtilsService.privateKeyToAddress(privateKey);
     }
 

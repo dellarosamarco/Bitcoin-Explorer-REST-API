@@ -134,15 +134,13 @@ public class BitcoinUtilsService
         return pubKeyYPrefix + pubKeyX;
     }
 
-    public static Address[] privateKeyToAddress(PrivateKey[] privateKeys){
+    public static Address[] privateKeyToAddress(String[] privateKeys){
         int total = privateKeys.length;
         Address[] addresses = new Address[total];
 
         for(int i=0;i<total;i++){
-            String hex = privateKeys[i].getPrivateKey();
-
             addresses[i] = new Address();
-            addresses[i].setPrivateKey(hex);
+            addresses[i].setPrivateKey(privateKeys[i]);
         }
 
         return addresses;

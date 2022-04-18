@@ -23,7 +23,7 @@ public class BitcoinWalletResource {
     }
 
     @RequestMapping(value = "/getBalance", method = RequestMethod.GET)
-    public @ResponseBody Map<String, BlockchainInfoDTO> getBalance(@RequestParam(name = "address") String address) throws IOException, ParseException {
+    public @ResponseBody Map<String, BlockchainInfoDTO> getBalance(@RequestParam(name = "address") String[] address) throws IOException {
         return BlockchainService.getBalance(address);
     }
 }
