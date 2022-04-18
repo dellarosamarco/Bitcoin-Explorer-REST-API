@@ -14,22 +14,22 @@ public class BitcoinUtilsResource {
     }
 
     @RequestMapping(value = "/privateKeyToPublicKey", method = RequestMethod.GET)
-    public PublicKey privateKeyToPublicKey(@RequestParam(name = "Private Key") String privateKey){
+    public PublicKey privateKeyToPublicKey(@RequestParam(name = "privateKey") String privateKey){
         return BitcoinUtilsService.privateKeyToPublicKey(privateKey);
     }
 
     @RequestMapping(value = "/publicKeyToAddress", method = RequestMethod.GET)
-    public String publicKeyToAddress(@RequestParam(name = "Public Key") String publicKey){
+    public String publicKeyToAddress(@RequestParam(name = "publicKey") String publicKey){
         return BitcoinUtilsService.publicKeyToAddress(publicKey);
     }
 
     @RequestMapping(value = "/wifToPrivateKey", method = RequestMethod.GET)
-    public String wifToPrivateKey(@RequestParam(name = "WIF") String wif){
+    public String wifToPrivateKey(@RequestParam(name = "wif") String wif){
         return BitcoinUtilsService.wifToHex(wif);
     }
 
     @RequestMapping(value = "/privateKeyToWif", method = RequestMethod.GET)
-    public String privateKeyToWif(@RequestParam(name = "Private key") String privateKey){
+    public String privateKeyToWif(@RequestParam(name = "privateKey") String privateKey){
         return BitcoinUtilsService.hexToWif(privateKey);
     }
 }

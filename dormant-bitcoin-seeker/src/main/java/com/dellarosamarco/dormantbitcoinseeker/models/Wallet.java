@@ -1,8 +1,10 @@
 package com.dellarosamarco.dormantbitcoinseeker.models;
 
 import com.dellarosamarco.dormantbitcoinseeker.service.BitcoinUtilsService;
+import com.dellarosamarco.dormantbitcoinseeker.service.BlockchainService;
+import org.apache.tomcat.util.json.ParseException;
 import org.web3j.crypto.Sign;
-
+import java.io.IOException;
 import java.math.BigInteger;
 
 public class Wallet {
@@ -10,36 +12,10 @@ public class Wallet {
     private String privateKey;
     private String wif;
     private String publicKey;
-    private double balance;
-    private double totalReceived;
-    private int totalTransactions;
+    private BlockchainInfoDTO blockchainInfo;
 
     public String getAddress() {
         return address;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getTotalReceived() {
-        return totalReceived;
-    }
-
-    public void setTotalReceived(double totalReceived) {
-        this.totalReceived = totalReceived;
-    }
-
-    public int getTotalTransactions() {
-        return totalTransactions;
-    }
-
-    public void setTotalTransactions(int totalTransactions) {
-        this.totalTransactions = totalTransactions;
     }
 
     public String getWif() {
@@ -67,7 +43,7 @@ public class Wallet {
         return privateKey;
     }
 
-    public void setPrivateKey(String privateKey) {
+    public void setPrivateKey(String privateKey) throws IOException, ParseException {
         this.privateKey = privateKey;
 
         this.wif = BitcoinUtilsService.hexToWif(privateKey);
@@ -76,5 +52,11 @@ public class Wallet {
         this.publicKey = BitcoinUtilsService.compressPubKey(pubKey);
 
         this.address = BitcoinUtilsService.publicKeyToAddress(publicKey);
+
+        this.blockchainInfo = BlockchainService.getBalance(this.address).get(this.address);
+    }
+
+    public BlockchainInfoDTO getBlockchainInfoDTO() {
+        return blockchainInfo;
     }
 }
