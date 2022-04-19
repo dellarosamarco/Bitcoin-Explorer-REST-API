@@ -10,6 +10,8 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/swagger-ui.
 | /randomAddress | total | Generate random bitcoin address |
 | /randomPrivateKey | total | Generate random private key |
 
+<br>
+
 ### Bitcoin Utils Resource
 | Endpoint | Params | Description |
 | -------- | ------ | -----------|
@@ -18,6 +20,8 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/swagger-ui.
 | /privateKeyToWif | privateKey[] | Convert private keys to bitcoin wallet import format (WIF)|
 | /wifToPrivateKey | wif[] | Convert wif to private keys |
 | /publicKeyToAddress | publicKey[] | Convert public keys to bitcon address |
+
+<br>
 
 ### Bitcoin Wallet Resource
 | Endpoint | Params | Description |
