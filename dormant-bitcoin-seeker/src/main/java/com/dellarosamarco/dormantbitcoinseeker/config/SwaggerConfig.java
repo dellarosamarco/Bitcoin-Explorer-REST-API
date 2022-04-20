@@ -22,7 +22,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(Predicate.not(PathSelectors.regex("/error")))
+                .paths(Predicate.not(PathSelectors.regex("/api/error")))
+                .paths(Predicate.not(PathSelectors.regex("/api/")))
                 .build()
                 .apiInfo(this.apiInfo())
                 .useDefaultResponseMessages(false);
@@ -30,15 +31,11 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
-        apiInfoBuilder.title("REST API");
+        apiInfoBuilder.title("Bitcoin Blockchain REST API");
         apiInfoBuilder.description("REST API Generation");
         apiInfoBuilder.version("1.0.0");
         apiInfoBuilder.license("GNU GENERAL PUBLIC LICENSE, Version 3");
         apiInfoBuilder.licenseUrl("https://www.gnu.org/licenses/gpl-3.0.en.html");
         return apiInfoBuilder.build();
-    }
-
-    private Predicate<String> paths() {
-        return PathSelectors.regex("/basic-error-controller.*");
     }
 }

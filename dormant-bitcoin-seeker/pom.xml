@@ -12,7 +12,7 @@
 	<artifactId>dormant-bitcoin-seeker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DormantBitcoinSeeker</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Bitcoin Blockchain REST API</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
