@@ -12,6 +12,14 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger
 
 <br>
 
+### Bitcoin Wallet Resource
+| Endpoint | Params | Description |
+| -------- | ------ | -----------|
+| /getBalance | address[] | Get balance of a bitcoin address |
+| /randomWallet | total | Generate random bitcoin wallets (it also return their balance) |
+
+<br>
+
 ### Bitcoin Utils Resource
 | Endpoint | Params | Description |
 | -------- | ------ | -----------|
@@ -20,11 +28,3 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger
 | /privateKeyToWif | privateKey[] | Convert private keys to bitcoin wallet import format (WIF)|
 | /wifToPrivateKey | wif[] | Convert wif to private keys |
 | /publicKeyToAddress | publicKey[] | Convert public keys to bitcon address |
-
-<br>
-
-### Bitcoin Wallet Resource
-| Endpoint | Params | Description |
-| -------- | ------ | -----------|
-| /getBalance | address[] | Get balance of a bitcoin address |
-| /randomWallet | total | Generate random bitcoin wallets (it also return their balance) |
