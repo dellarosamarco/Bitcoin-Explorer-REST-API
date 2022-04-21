@@ -12,6 +12,11 @@ public class Wallet {
     private String privateKey;
     private String wif;
     private String publicKey;
+
+    public BlockchainInfoDTO getBlockchainInfo() {
+        return blockchainInfo;
+    }
+
     private BlockchainInfoDTO blockchainInfo;
 
     public String getAddress() {
