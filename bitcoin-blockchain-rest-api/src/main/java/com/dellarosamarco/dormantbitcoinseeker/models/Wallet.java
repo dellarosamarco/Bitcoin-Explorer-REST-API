@@ -13,11 +13,11 @@ public class Wallet {
     private String wif;
     private String publicKey;
 
+    private BlockchainInfoDTO blockchainInfo;
+
     public BlockchainInfoDTO getBlockchainInfo() {
         return blockchainInfo;
     }
-
-    private BlockchainInfoDTO blockchainInfo;
 
     public String getAddress() {
         return address;
@@ -58,10 +58,6 @@ public class Wallet {
 
         this.address = BitcoinUtilsService.publicKeyToAddress(publicKey);
 
-        this.blockchainInfo = BlockchainService.getBalance(this.address).get(this.address);
-    }
-
-    public BlockchainInfoDTO getBlockchainInfoDTO() {
-        return blockchainInfo;
+        this.blockchainInfo = BlockchainService.getBalanceByAddress(this.address).get(this.address);
     }
 }

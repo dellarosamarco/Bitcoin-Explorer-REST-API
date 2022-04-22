@@ -3,7 +3,7 @@ package com.dellarosamarco.dormantbitcoinseeker.models;
 public class Wallets{
     private double totalBalance;
     private int totalTransactions;
-    private int totalReceived;
+    private double totalReceived;
 
     private Wallet[] wallets;
 
@@ -15,7 +15,7 @@ public class Wallets{
         this.wallets = wallets;
 
         for (Wallet wallet : wallets) {
-            BlockchainInfoDTO blockchainInfoDTO = wallet.getBlockchainInfoDTO();
+            BlockchainInfoDTO blockchainInfoDTO = wallet.getBlockchainInfo();
             totalBalance += blockchainInfoDTO.getFinal_balance();
             totalTransactions += blockchainInfoDTO.getN_tx();
             totalReceived += blockchainInfoDTO.getTotal_received();
@@ -30,7 +30,7 @@ public class Wallets{
         return totalTransactions;
     }
 
-    public int getTotalReceived() {
+    public double getTotalReceived() {
         return totalReceived;
     }
 }

@@ -29,4 +29,10 @@ public class BitcoinWalletService {
 
         return walletsWrapper;
     }
+
+    public Wallet getWalletFromPrivateKey(String privateKey) throws IOException, ParseException {
+        Wallet wallet = new Wallet();
+        wallet.setPrivateKey(privateKey);
+        return wallet;
+    }
 }

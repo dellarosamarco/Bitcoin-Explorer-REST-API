@@ -23,8 +23,18 @@ public class BitcoinWalletResource {
         return bitcoinWalletService.randomWallet(total);
     }
 
-    @RequestMapping(value = "/getBalance", method = RequestMethod.GET)
-    public @ResponseBody Map<String, BlockchainInfoDTO> getBalance(@RequestParam(name = "address") String[] address) throws IOException {
-        return BlockchainService.getBalance(address);
+    @RequestMapping(value = "/getWalletFromPrivateKey", method = RequestMethod.GET)
+    public Wallet getWalletFromPrivateKey(@RequestParam() String privateKey) throws IOException, ParseException {
+        return bitcoinWalletService.getWalletFromPrivateKey(privateKey);
+    }
+
+    @RequestMapping(value = "/getBalanceByAddress", method = RequestMethod.GET)
+    public @ResponseBody Map<String, BlockchainInfoDTO> getBalanceByAddress(@RequestParam(name = "address") String[] address) throws IOException {
+        return BlockchainService.getBalanceByAddress(address);
+    }
+
+    @RequestMapping(value = "/getBalanceByPrivateKey", method = RequestMethod.GET)
+    public @ResponseBody Map<String, BlockchainInfoDTO> getBalanceByPrivateKey(@RequestParam(name = "privateKey") String[] privateKeys) throws IOException {
+        return BlockchainService.getBalanceByPrivateKey(privateKeys);
     }
 }
