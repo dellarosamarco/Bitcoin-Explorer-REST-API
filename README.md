@@ -7,7 +7,9 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger
 ### Bitcoin Wallet Resource
 | Endpoint | Params | Description |
 | -------- | ------ | -----------|
-| /getBalance | address[] | Get balance of a bitcoin address |
+| /getBalanceByAddress | address[] | Get balance of a Bitcoin address |
+| /getBalanceByPrivateKey | privateKeys[] | Get balance of a Bitcoin address by it's private key |
+| /getWalletFromPrivateKey | privateKey | Generate Bitcoin Wallet by it's private key |
 | /randomWallet | total | Generate random bitcoin wallets (it also return their balance) |
 
 <br>
@@ -15,7 +17,7 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger
 ### Bitcoin Resource
 | Endpoint | Params | Description |
 | -------- | ------ | -----------|
-| /randomAddress | total | Generate random bitcoin address |
+| /randomAddress | total | Generate random Bitcoin address |
 | /randomPrivateKey | total | Generate random private key |
 
 <br>
