@@ -1,7 +1,6 @@
 # Bitcoin Blockchain REST API
 
 ## API Documentation
-__Api Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api</br>
 __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger-ui.html
 
 ### Bitcoin Wallet Resource
