@@ -19,8 +19,13 @@ public class BitcoinWalletResource {
     BitcoinWalletService bitcoinWalletService;
 
     @RequestMapping(value = "/randomWallet", method = RequestMethod.GET)
-    public Wallets randomWallet(@RequestParam(required = false, name = "totalWallet", defaultValue = "1") int total) throws IOException, ParseException {
+    public Wallets randomWallet(@RequestParam(required = false, name = "totalWallets", defaultValue = "1") int total) throws IOException, ParseException {
         return bitcoinWalletService.randomWallet(total);
+    }
+
+    @RequestMapping(value = "/randomMnemonicWallet", method = RequestMethod.GET)
+    public String randomMnemonicWallet(@RequestParam(required = false, name = "totalWallets", defaultValue = "1") int total){
+        return "";
     }
 
     @RequestMapping(value = "/getWalletFromPrivateKey", method = RequestMethod.GET)
