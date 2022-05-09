@@ -18,6 +18,7 @@ __Swagger Path__ : https://bitcoin-blockchain-rest-api.herokuapp.com/api/swagger
 | -------- | ------ | -----------|
 | /randomAddress | total | Generate random Bitcoin address |
 | /randomPrivateKey | total | Generate random private key |
+| /randomMnemonic | total | Generate random Bitcoin mnemonic phrase |
 
 <br>
 
