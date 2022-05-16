@@ -73,6 +73,7 @@ public class BitcoinService {
             }
 
             mnemonics[x] = mnemonic.toString();
+
         }
 
         return mnemonics;
